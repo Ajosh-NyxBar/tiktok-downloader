@@ -1,10 +1,12 @@
 const TikTokVideo = ({ videoData }) => {
     const {
+      title,
       video: { noWatermark, durationFormatted, ratio },
-      music: { playUrl },
+      music: { play_url, title: musicTitle },
     } = videoData;
   
     const downloadFile = async (url, filename) => {
+      alert("File sedang diunduh");
       const response = await fetch(url);
       const blob = await response.blob();
       const link = document.createElement('a');
@@ -28,13 +30,13 @@ const TikTokVideo = ({ videoData }) => {
             <div className="flex justify-between mt-4">
               <button
                 className="bg-primary text-secondary p-2 rounded cursor-pointer hover:bg-gradientEnd"
-                onClick={() => downloadFile(noWatermark, `${videoData.video.title}.mp4`)}
+                onClick={() => downloadFile(noWatermark, `${title}.mp4`)}
               >
                 Download Video
               </button>
               <button
                 className="bg-primary text-secondary p-2 rounded cursor-pointer hover:bg-gradientEnd"
-                onClick={() => downloadFile(playUrl, `${videoData.music.title}.mp3`)}
+                onClick={() => downloadFile(play_url, `${musicTitle}.mp3`)}
               >
                 Download Music
               </button>
