@@ -16,19 +16,29 @@ const TikTokVideo = ({ videoData }) => {
     };
   
     return (
-      <div className="tiktok-video-container">
-        <div className="video-info">
-          <div className="video-container">
-            <video controls>
+      <div className="flex flex-col items-center">
+        <div className="w-full max-w-md">
+          <div className="bg-white shadow-md rounded-lg p-4">
+            <video controls className="w-full rounded">
               <source src={noWatermark} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-          </div>
-          <p>Duration: {durationFormatted}</p>
-          <p>Ratio: {ratio}</p>
-          <div className="download-buttons">
-            <button className="download-button" onClick={() => downloadFile(noWatermark, `${videoData.video.title}.mp4`)}>Download Video</button>
-            <button className="download-button" onClick={() => downloadFile(playUrl, `${videoData.music.title}.mp3`)}>Download Music</button>
+            <p className="mt-2">Duration: {durationFormatted}</p>
+            <p>Ratio: {ratio}</p>
+            <div className="flex justify-between mt-4">
+              <button
+                className="bg-primary text-secondary p-2 rounded cursor-pointer hover:bg-gradientEnd"
+                onClick={() => downloadFile(noWatermark, `${videoData.video.title}.mp4`)}
+              >
+                Download Video
+              </button>
+              <button
+                className="bg-primary text-secondary p-2 rounded cursor-pointer hover:bg-gradientEnd"
+                onClick={() => downloadFile(playUrl, `${videoData.music.title}.mp3`)}
+              >
+                Download Music
+              </button>
+            </div>
           </div>
         </div>
       </div>

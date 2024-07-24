@@ -32,24 +32,33 @@ const App = () => {
   };
 
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <h1>AJOSH VIDEO TIKTOK DOWNLOADER</h1>
+    <div className="bg-gradient-to-r from-gradientStart to-gradientEnd min-h-screen flex flex-col items-center">
+      <header className="bg-primary text-secondary text-center p-5">
+        <h1 className="font-irisGrover">AJOSH VIDEO TIKTOK DOWNLOADER</h1>
       </header>
-      <div className="search-container">
+      <div className="flex justify-center my-5">
         <input
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Paste TikTok video link here"
+          className="w-1/2 p-2 rounded border border-gray-300"
         />
-        <button onClick={handleFetchVideoData}>Search</button>
-        <button onClick={handleReset}>Reset</button>
+        <button
+          onClick={handleFetchVideoData}
+          className="bg-primary text-secondary p-2 ml-2 rounded cursor-pointer hover:bg-gradientEnd"
+        >
+          Search
+        </button>
+        <button
+          onClick={handleReset}
+          className="bg-primary text-secondary p-2 ml-2 rounded cursor-pointer hover:bg-gradientEnd"
+        >
+          Reset
+        </button>
       </div>
-      <div className="content-container">
+      <div className="flex justify-center my-5">
         {videoData && <TikTokVideo videoData={videoData} />}
-      </div>
-      <div className="footer-buttons">
       </div>
     </div>
   );
